@@ -40,6 +40,18 @@ public class PowerUp : MonoBehaviour
                         player.ActivateShield();
                         break;
 
+                    case 3:
+                        player.AddtoHealth();
+                        break;
+
+                    case 4:
+                        player.UpdateAmmo();
+                        break;
+
+                    case 5:
+                        player.ActivateWaveFire();
+                        break;
+
                     default:
                         Debug.LogError("PowerupID is Invalid");
                         break;

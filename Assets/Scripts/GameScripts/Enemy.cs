@@ -83,6 +83,15 @@ public class Enemy : MonoBehaviour
             }
             StartCoroutine(EnemyDeathSequence());
         }
+
+        else if (other.tag == "Wave")
+        {
+            if (player != null)
+            {
+                player.AddtoScore(10);
+            }
+            StartCoroutine(EnemyDeathSequence());
+        }
     }
 
     IEnumerator EnemyDeathSequence()

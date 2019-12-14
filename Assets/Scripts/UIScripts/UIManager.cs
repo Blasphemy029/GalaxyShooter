@@ -11,8 +11,11 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Image livesImage;
     [SerializeField] private Text gameOverText;
     [SerializeField] private Text restartText;
+    [SerializeField] private Text ammoCount;
+    [SerializeField] private Image fuelAmount;
 
     private GameManager gameManager;
+    private Player player;
 
     void Start()
     {
@@ -21,9 +24,19 @@ public class UIManager : MonoBehaviour
         {
             Debug.LogError("GameManager is NULL");
         }
+
+        player = GameObject.Find("Player").GetComponent<Player>();
+
         restartText.gameObject.SetActive(false);
         gameOverText.gameObject.SetActive(false);
         scoreText.text = "Score: " + 0;
+        ammoCount.text = player.currentAmmo.ToString();
+    }
+
+    private void Update()
+    {
+        ammoCount.text = player.currentAmmo.ToString();
+        fuelAmount.fillAmount = player.thrusterFuel / player.maxFuel;
     }
 
     public void UpdateScoreText(int PlayerScore)
